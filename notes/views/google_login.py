@@ -74,6 +74,6 @@ class GoogleAuthView(APIView):
             "refresh": str(refresh),
             "access": str(refresh.access_token),
             "profile": userProfileSerializer.data
-        })#falta el serializer
+        })
 
 
