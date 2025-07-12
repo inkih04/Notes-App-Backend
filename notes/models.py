@@ -9,11 +9,6 @@ class NoteBook(models.Model):
     def __str__(self):
         return self.name
 
-class Attachment(models.Model):
-    file_name = models.CharField(max_length=255)
-    url = models.URLField()
-    def __str__(self):
-        return self.file_name
 
 
 class Note(models.Model):
@@ -24,7 +19,6 @@ class Note(models.Model):
     bloc = models.ForeignKey(NoteBook, on_delete=models.CASCADE, related_name='notes')
     checked = models.BooleanField(default=False)
     important = models.BooleanField(default=False)
-    attachments = models.ManyToManyField(Attachment, blank=True, related_name='notes')
     color = models.CharField(max_length=7, default="#FEDC3B")  # Color in hex format
 
     class Meta:
@@ -38,7 +32,6 @@ class Note(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(blank=True, null=True)
-   # profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True) #TODO: Hay que guardarlo en algun sitio
 
     def __str__(self):
         return f"{self.user.username}'s Profile"

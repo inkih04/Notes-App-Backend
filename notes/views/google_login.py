@@ -52,7 +52,7 @@ class GoogleAuthView(APIView):
             defaults= {
                 "username": username,
                 "first_name": idinfo.get('given_name', '')
-            }#TODO: "profile_picture": idinfo.get('picture', '')
+            }
         )
 
         user_profile, created = UserProfile.objects.get_or_create(
@@ -73,7 +73,8 @@ class GoogleAuthView(APIView):
         return Response({
             "refresh": str(refresh),
             "access": str(refresh.access_token),
-            "profile": userProfileSerializer.data
+            "profile": userProfileSerializer.data,
+            "picture": idinfo.get('picture', '')
         })
 
 
