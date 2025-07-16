@@ -17,7 +17,7 @@ class NotebookViewSet(APIView):
 
     def get_object(self, pk, user):
         try:
-            return Notebook.objects.get(pk=pk, user=user)
+            return Notebook.objects.get(pk=pk, users=user)
         except Notebook.DoesNotExist:
             return None
 
