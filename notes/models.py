@@ -13,19 +13,27 @@ class Notebook(models.Model):
         return self.name
 
 
+class FavNotes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fav_notes')
+    note = models.ForeignKey('Note', on_delete=models.CASCADE, related_name='fav_notes')
+    class Meta:
+        unique_together = ('user', 'note')
+
+    def __str__(self):
+        return f"{self.user.username} - {self.note.title}"
+
+
 
 class Note(models.Model):
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notes')
     bloc = models.ForeignKey(Notebook, on_delete=models.CASCADE, related_name='notes')
     checked = models.BooleanField(default=False)
-    important = models.BooleanField(default=False)
     color = models.CharField(max_length=7, default="#FEDC3B")
 
     class Meta:
-        unique_together = ('bloc', 'title')
         ordering = ['-created_at']
 
     def __str__(self):
