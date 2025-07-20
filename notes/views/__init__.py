@@ -4,6 +4,7 @@ from .notebook import NotebookListViewSet, NotebookViewSet
 from .notebook_create import NotebookCreateView
 from .note_set import NoteListViewSet, NoteViewSet
 from .fav_notes import FavNotesViewSet
+from .closed_notes import ClosedNotesView
 
 __all__ = [
     'GoogleAuthView',
@@ -13,5 +14,6 @@ __all__ = [
     'NotebookCreateView',
     'NoteListViewSet',
     'NoteViewSet',
-    'FavNotesViewSet'
+    'FavNotesViewSet',
+    'ClosedNotesView',
 ]

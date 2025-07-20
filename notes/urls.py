@@ -24,6 +24,7 @@ urlpatterns = [
     path('notebooks/<int:bloc_id>/notes/<int:pk>/', NoteViewSet.as_view(), name='note-detail'),
     path('fav/notes/', favnotes_list, name='favnotes-list'),
     path('fav/notes/<int:pk>/', favnotes_detail, name='favnotes-detail'),
+    path('notes/checked/', ClosedNotesView.as_view(), name='closed_notes'),
 
 
 ]
