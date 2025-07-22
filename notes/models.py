@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -7,7 +9,8 @@ class Notebook(models.Model):
     description = models.TextField(blank=True, null=True)
     is_shared = models.BooleanField(default=False)
     users = models.ManyToManyField(User, related_name='notebooks')
-    color = models.CharField(max_length=7, default="#FEDC3B")  # Color in hex format
+    color = models.CharField(max_length=7, default="#FEDC3B")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_notebooks')
 
     def __str__(self):
         return self.name
@@ -22,6 +25,17 @@ class FavNotes(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.note.title}"
 
+
+class NotebookInvitation(models.Model):
+    email = models.EmailField()
+    notebook = models.ForeignKey(Notebook, on_delete=models.CASCADE, related_name='invitations')
+    token = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    invited_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_invitations')
+    accepted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Invite to {self.email} for {self.notebook.name}"
 
 
 class Note(models.Model):
