@@ -8,6 +8,7 @@ from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.tokens import RefreshToken
 import requests
 from django.conf import settings
+from django.utils.text import slugify
 
 from notes.models import UserProfile
 from notes.serializers import UserProfileSerializer
@@ -16,6 +17,7 @@ from notes.serializers import UserProfileSerializer
 User = get_user_model()
 
 class GoogleAuthView(APIView):
+
 
     def post(self, request):
         code =  request.data.get('code')
@@ -45,7 +47,7 @@ class GoogleAuthView(APIView):
             return Response({"error": "Invalid ID token"}, status=status.HTTP_400_BAD_REQUEST)
 
         email = idinfo.get('email')
-        username = idinfo.get('given_name')
+        username = generate_unique_username(idinfo.get('given_name', 'user'))
 
         user, created = User.objects.get_or_create(
             email=email,
@@ -63,9 +65,6 @@ class GoogleAuthView(APIView):
             }
         )
 
-        if not created:
-            pass #TODO: Update profile picture
-
         refresh = RefreshToken.for_user(user)
 
         userProfileSerializer = UserProfileSerializer(user_profile)
@@ -76,5 +75,14 @@ class GoogleAuthView(APIView):
             "profile": userProfileSerializer.data,
             "picture": idinfo.get('picture', '')
         })
+
+def generate_unique_username(base_name):
+    base_username = slugify(base_name)
+    username = base_username
+    counter = 1
+    while User.objects.filter(username=username).exists():
+        username = f"{base_username}{counter}"
+        counter += 1
+    return username
 
 

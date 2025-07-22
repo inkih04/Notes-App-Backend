@@ -5,6 +5,8 @@ from .notebook_create import NotebookCreateView
 from .note_set import NoteListViewSet, NoteViewSet
 from .fav_notes import FavNotesViewSet
 from .closed_notes import ClosedNotesView
+from .invite_to_notebook import InviteToNotebookView
+from .accept_invitation import AcceptInvitationView
 
 __all__ = [
     'GoogleAuthView',
@@ -16,4 +18,6 @@ __all__ = [
     'NoteViewSet',
     'FavNotesViewSet',
     'ClosedNotesView',
+    'InviteToNotebookView',
+    'AcceptInvitationView'
 ]

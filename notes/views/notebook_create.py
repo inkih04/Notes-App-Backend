@@ -9,5 +9,5 @@ class NotebookCreateView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        notebook = serializer.save(is_shared=False)
+        notebook = serializer.save(is_shared=False, author=self.request.user)
         notebook.users.set([self.request.user])

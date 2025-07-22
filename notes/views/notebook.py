@@ -26,6 +26,9 @@ class NotebookViewSet(APIView):
         if not notebook:
             return Response({"error": "Notebook not found"}, status=404)
 
+        if notebook.author != request.user:
+            return Response({"error": "You do not have permission to edit this notebook"}, status=403)
+
         serializer = NotebookSerializer(notebook, data=request.data, partial=True)
         if  serializer.is_valid():
             serializer.save()
@@ -37,5 +40,12 @@ class NotebookViewSet(APIView):
         notebook = self.get_object(pk, request.user)
         if not notebook:
             return Response({"error": "Notebook not found"}, status=404)
-        notebook.delete()
+
+        if notebook.author != request.user:
+            notebook.users.remove(request.user)
+            if notebook.users.count() < 2:
+                notebook.is_shared = False
+                notebook.save()
+        else:
+            notebook.delete()
         return Response({"detail": "Notebook deleted"}, status=204)

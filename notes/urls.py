@@ -26,5 +26,7 @@ urlpatterns = [
     path('fav/notes/<int:pk>/', favnotes_detail, name='favnotes-detail'),
     path('notes/checked/', ClosedNotesView.as_view(), name='closed_notes'),
 
+    path('notebooks/<int:notebook_id>/invite/', InviteToNotebookView.as_view(), name='invite_to_notebook'),
+    path('notebooks/accept-invitation/<uuid:token>/', AcceptInvitationView.as_view(), name='accept_invitation'),
 
 ]
