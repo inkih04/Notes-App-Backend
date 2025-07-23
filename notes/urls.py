@@ -13,7 +13,7 @@ favnotes_detail = FavNotesViewSet.as_view({
 
 
 urlpatterns = [
-    path('', health_check),
+    path('/', health_check),
     path("auth/google/", GoogleAuthView.as_view(), name="google_auth"),
     path("auth/check-token/", CheckTokenView.as_view(), name="check_token"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
