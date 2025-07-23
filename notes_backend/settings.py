@@ -67,7 +67,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://notes-app-frontend-yv8o-git-feat-deploy-vics-projects-668ba45c.vercel.app",
-    "https://notes-app-frontend-yv8o.vercel.app/",
+    "https://notes-app-frontend-yv8o.vercel.app",
     "http://localhost:5173"
 ]
 
