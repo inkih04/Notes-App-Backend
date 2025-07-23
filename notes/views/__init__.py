@@ -7,6 +7,7 @@ from .fav_notes import FavNotesViewSet
 from .closed_notes import ClosedNotesView
 from .invite_to_notebook import InviteToNotebookView
 from .accept_invitation import AcceptInvitationView
+from .health_check import health_check
 
 __all__ = [
     'GoogleAuthView',
@@ -19,5 +20,6 @@ __all__ = [
     'FavNotesViewSet',
     'ClosedNotesView',
     'InviteToNotebookView',
-    'AcceptInvitationView'
+    'AcceptInvitationView',
+    'health_check'
 ]
