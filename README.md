@@ -1,95 +1,93 @@
 # 🗒️ Notes App Backend
 
-Este es el **backend de la aplicación Notes App**, desarrollado con Django y Django REST Framework. Ofrece una API RESTful para gestionar notas y notebooks, con autenticación vía Google OAuth2 y JWT.
+This is the **Notes App backend**, developed with Django and Django REST Framework. It provides a RESTful API for managing notes and notebooks, with authentication via Google OAuth2 and JWT.
 
-> 🔗 **API en producción:**  
+> 🔗 **Production API:**  
 > https://notes-app-backend-37a9.onrender.com/
 
 ---
 
-## 🚀 Características principales
+## 🚀 Main Features
 
-- 📝 CRUD de **notas**
-- 📁 CRUD de **notebooks**
-- 🔐 **Autenticación** con Google OAuth 2.0
-- 🔄 **JWT** (access y refresh tokens)
-- 🌐 **CORS** configurado para acceso desde frontend (Vercel)
-- ⚙️ API lista para conectar con frontend en React/Vite
+- 📝 **Notes** CRUD operations
+- 📁 **Notebooks** CRUD operations
+- 🔐 **Authentication** with Google OAuth 2.0
+- 🔄 **JWT** (access and refresh tokens)
+- 🌐 **CORS** configured for frontend access (Vercel)
+- ⚙️ API ready to connect with React/Vite frontend
 
 ---
 
-## 📦 Requisitos
+## 📦 Requirements
 
 - Python 3.10+
 - pip
 - Git
-- SQLite (incluido por defecto con Python)
+- SQLite (included by default with Python)
 
 ---
 
-## 🛠️ Instalación local
+## 🛠️ Local Installation
 
-Para correr el proyecto localmente, puedes usar el script incluido:
+To run the project locally, you can use the included script:
 
 ```bash
 ./run-localDev.sh
 ```
-Este script:
 
-✅ Crea un entorno virtual (venv/)
+This script:
 
-📦 Instala dependencias desde requirements.txt
+✅ Creates a virtual environment (venv/)
 
-🔄 Aplica migraciones automáticamente
+📦 Installs dependencies from requirements.txt
 
-🚀 Inicia el servidor en: http://127.0.0.1:8000/
+🔄 Applies migrations automatically
 
-🔐 Variables de entorno
-Creamos un archivo .env en la raíz del proyecto usando python-decouple.
+🚀 Starts the server at: http://127.0.0.1:8000/
 
-Ejemplo de configuración mínima:
+## 🔐 Environment Variables
 
-env
+Create a `.env` file in the project root using python-decouple.
+
+Minimal configuration example:
+
 ```bash
-SECRET_KEY=tu_clave_secreta
-GOOGLE_CLIENT_ID=tu_google_client_id
-GOOGLE_CLIENT_SECRET=tu_google_client_secret
-EMAIL_HOST_PASSWORD=tu_contraseña_de_aplicacion
+SECRET_KEY=your_secret_key
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+EMAIL_HOST_PASSWORD=your_app_password
 FRONTEND_URL=http://localhost:3000
 ```
-## 📁 Estructura del proyecto
+
+## 📁 Project Structure
+
 ```bash
 notes_backend/
-├── notes/                  # App principal (notas, notebooks, perfiles)
-├── notes_backend/          # Configuración del proyecto Django
-├── run-localDev.sh         # Script de desarrollo local
+├── notes/                  # Main app (notes, notebooks, profiles)
+├── notes_backend/          # Django project configuration
+├── run-localDev.sh         # Local development script
 ├── requirements.txt
 └── manage.py
 ```
 
-## 🌐 Despliegue en producción
-Este backend está desplegado en Render, usando Gunicorn como servidor WSGI.
-Actualmente se utiliza una base de datos SQLite, pero está preparado para migrar fácilmente a PostgreSQL.
+## 🌐 Production Deployment
 
-🔗 Enlaces útiles
-🧠 Repositorio Frontend (React + Vite): Notes-App-Frontend
+This backend is deployed on Render, using Gunicorn as the WSGI server.
+Currently uses SQLite database, but is prepared to easily migrate to PostgreSQL.
 
-⚙️ Backend en producción: Render - API Link
+## 🔗 Useful Links
 
-📦 API Docs: pendiente de implementación
+🧠 Frontend Repository (React + Vite): Notes-App-Frontend
 
-📌 Notas
-El desarrollo activo se realiza en la rama dev
+⚙️ Production Backend: Render - API Link
 
-Para pull requests y colaboraciones, por favor, basa tus cambios en la rama dev.
+📦 API Docs: pending implementation
 
-🧑‍💻 Autor
-Desarrollado por @inkih04
+## 📌 Notes
 
+- Active development is done on the `dev` branch
+- For pull requests and collaborations, please base your changes on the `dev` branch
 
+## 🧑‍💻 Author
 
-
-
-
-
-
+Developed by @inkih04
