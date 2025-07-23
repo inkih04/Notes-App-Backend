@@ -65,7 +65,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True  #todo Especificar los orígenes permitidos en producción
+CORS_ALLOWED_ORIGINS = [
+    "https://notes-app-frontend-yv8o-git-feat-deploy-vics-projects-668ba45c.vercel.app/",
+    "http://localhost:5173"
+]
 
 ROOT_URLCONF = 'notes_backend.urls'
 
