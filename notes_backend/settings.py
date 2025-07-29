@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = SECRET_KEY_VALUE
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'notes-app-backend-37a9.onrender.com',  
@@ -65,7 +65,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True  #todo Especificar los orígenes permitidos en producción
+CORS_ALLOWED_ORIGINS = [
+    "https://notes-app-frontend-yv8o-git-feat-deploy-vics-projects-668ba45c.vercel.app",
+    "https://notes-app-frontend-yv8o.vercel.app",
+    "http://localhost:5173"
+]
 
 ROOT_URLCONF = 'notes_backend.urls'
 
