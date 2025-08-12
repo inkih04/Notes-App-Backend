@@ -29,5 +29,6 @@ urlpatterns = [
 
     path('notebooks/<int:notebook_id>/invite/', InviteToNotebookView.as_view(), name='invite_to_notebook'),
     path('notebooks/accept-invitation/<uuid:token>/', AcceptInvitationView.as_view(), name='accept_invitation'),
+    path('ping/', Ping.as_view(), name='ping'),
 
 ]

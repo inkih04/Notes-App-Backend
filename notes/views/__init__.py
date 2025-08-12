@@ -8,6 +8,7 @@ from .closed_notes import ClosedNotesView
 from .invite_to_notebook import InviteToNotebookView
 from .accept_invitation import AcceptInvitationView
 from .health_check import health_check
+from .ping import Ping
 
 __all__ = [
     'GoogleAuthView',
@@ -21,5 +22,6 @@ __all__ = [
     'ClosedNotesView',
     'InviteToNotebookView',
     'AcceptInvitationView',
-    'health_check'
+    'health_check',
+    'Ping'
 ]
